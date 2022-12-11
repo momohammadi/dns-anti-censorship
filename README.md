@@ -104,6 +104,7 @@ pi-hole web access port number is 8081
 
 #### IR VM
 DOH stamp genrated here: [DNSCrypt - DNS Stamps online calculator ](https://dnscrypt.info/stamps/)
+add domain list to file dns-anti-censorship/IR/dns_proxy/data/domains.lst only this domain will be behind of tunnel, anything else resolve and load directly from inertnet client
 ```
 git clone https://github.com/momohammadi/dns-anti-censorship.git
 cd dns-anti-censorship/IR
@@ -112,9 +113,10 @@ cd dns-anti-censorship/IR
 # REPLACE_SHADOWSOCKS_IP, SHADOWSOCKS_SERVER_PORT, SHADOWSOCKS_SERVER_PASSWORD, SHADOWSOCKS_METHOD, REPLACE_SERVER_PUBLIC_IP, REPLACE_YOUR_DOMAIN, DOH_STAMP_STRING
 docker compose up -d
 ```
+note after each time of edite domains.lst file run `docker compose restart`
 
 ## usage
-depend on your OS change your dns address to your IR VM 
+depend on your OS change your dns address to your IR VM IPs
 on some os like android you should install 3rd party app for doing dns change
 ### trick
 you ca run this stack and use his dns address for other services in the restricted network as DNS server such v2ray, pptp, l2tp, openconect or etc and then use their connection/authentication for connecting to it and with this trick finally you have an anti-censorship system with authentication solution.
