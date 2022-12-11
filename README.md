@@ -2,6 +2,15 @@
 Bypass Online Censorship by just changing your DNS addresses
 
 A DNS proxy allows you to transmit selected DNS queries through a tunnel interface, which prevents malicious users from learning about the internal configuration of a network
+
+#### what does this do?
+this stack provides an easy way to bypass internet Censorship for your selected domains by changing your DNS addresses.
+when you change the system DNS address to your IR VM IP address all selected domains will be resolved and loaded from DE VM so you have no censorship on these domains and all of the other domains will load normally from your ISP
+
+#### why do we need two VMs?
+you can run this stack with just one VM but in this situation when the Internet lockdown completely and the government-run intranet is instead of the internet then you can not use it so I make it with two VM, one on the restricted network and the other on the open internet network for just in case when internet goes completely lockdown.
+
+
 ## :blue_book: Requirements
 One Ubuntu/Debian VM on the restricted network (We called it IR)- Ram 512M, 1 CPU core, 8G free space
 
