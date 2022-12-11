@@ -1,0 +1,77 @@
+version: '3.8'
+services:
+  dns_proxy:
+    build:
+      context: dns_proxy
+      dockerfile: Dockerfile
+    container_name: dns_proxy
+    image: dns_proxy:last
+    ports:
+      - '53:5300/udp'
+      - '443:443/tcp'
+      - '80:80/tcp'
+    networks:
+      dns_proxy:
+        ipv4_address: 172.18.1.2
+    volumes:
+      - ./dns_proxy/data/domains.lst:/opt/unblock-proxy.sh/domains.lst:ro # domain list file
+    environment:
+      MODE: dns
+      NGINE: proxychain
+      DNS_MASSQ_PORT: 5300
+      DNSIP: REPLACE_SERVER_PUBLIC_IP # IR IP address
+      HTTP_PROXY_IP: 172.18.1.4
+      HTTP_PROXY_PORT: 8081
+      DOH_ADDRESS: REPLACE_YOUR_DOMAIN
+      DOH_STAMP: DOH_STAMP_STRING
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - http_proxy
+  proxy_client:
+    build:
+      context: shadowsocks_client
+      dockerfile: Dockerfile
+    container_name: shadowsocks_client
+    image: shadowsocks_client:latest
+    ports:
+      - '127.0.0.1:8080:8080'
+    environment:
+      SERVER_IP: REPLACE_SHADOWSOCKS_IP
+      SERVER_METHOD: SHADOWSOCKS_METHOD
+      LOCAL_PORT: 8080
+      LOCAL_IP: 172.18.1.3 # socks5 proxy private ip
+      SERVER_PORT: SHADOWSOCKS_SERVER_PORT
+      SERVER_PASS: SHADOWSOCKS_PASSWORD
+    networks:
+      dns_proxy:
+        ipv4_address: 172.18.1.3
+    restart: unless-stopped
+  http_proxy:
+    build:
+      context: proxychains
+      dockerfile: Dockerfile
+    container_name: http_proxy
+    image: proxychains_client
+    environment:
+      PROXY_SERVER_PORT: 8080
+      PROXY_SERVER_PROTOCOL: socks5
+      PROXY_SERVER_IP: 172.18.1.3
+      CLIENT_PORT: 8081
+      CLIENT_PROTOCOL: http
+    depends_on:
+      - proxy_client
+    ports:
+      - '127.0.0.1:8081:8081/tcp'
+    networks:
+      dns_proxy:
+        ipv4_address: 172.18.1.4
+    restart: unless-stopped
+
+networks:
+  dns_proxy:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.1.0/28

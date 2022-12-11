@@ -1,0 +1,14 @@
+{
+    "server":"SERVER_IP",
+    "server_port":SERVER_PORT,
+    "local_address": "LOCAL_IP",
+    "local_port":LOCAL_PORT,
+    "password":"SERVER_PASS",
+    "timeout":300,
+    "method":"SERVER_METHOD",
+    "fast_open": false,
+    "workers": 1,
+    "prefer_ipv6": false,
+    "plugin":"obfs-local",
+    "plugin_opts": "obfs=tls;obfs-host=www.google.com"
+}
