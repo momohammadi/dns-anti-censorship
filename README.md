@@ -64,8 +64,6 @@ Pi-hole web login:
 
 http://doh.yourdomain.com:8081/admin/login.php
 
-password: MrXKnqaqkQex3RepVxu
-
 #### dnsdist container: 
 
 [DOH](https://en.wikipedia.org/wiki/DNS_over_HTTPS) and DOT service
@@ -111,8 +109,6 @@ cd dns-anti-censorship/DE
 # REPLCAE_YOUR_DOMAIN, PIHOLE_ADMIN_PASS, CERTIFICATE_PATH, CERTIFICATE_PRIVATEKEY_PATH
 docker compose up -d
 ```
-pi-hole web access port number is 8081
-
 #### IR VM
 DOH stamp genrated here: [DNSCrypt - DNS Stamps online calculator ](https://dnscrypt.info/stamps/)
 add domain list to file dns-anti-censorship/IR/dns_proxy/data/domains.lst only this domain will be behind of tunnel, anything else resolve and load directly from inertnet client
