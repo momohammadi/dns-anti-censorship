@@ -1,4 +1,4 @@
-# DNSanti-censorship
+# DNS anti-censorship
 Bypass Online Censorship by just changing your DNS addresses
 
 A DNS proxy allows you to transmit selected DNS queries through a tunnel interface, which prevents malicious users from learning about the internal configuration of a network
