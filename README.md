@@ -15,7 +15,7 @@ one valid domain address
 
 >this is just for one DNS Address, if you want more than one DNS you should increase your VMs depending on what you want
 
-**‌ if you want to run the service using the docker files, the below content is just for learning**
+**‌ if you want to run the service Jump to [installation section](https://github.com/momohammadi/dns-anti-censorship#installation), the below content is just for learning**
 
 ## :clipboard: Summary
 
@@ -88,17 +88,28 @@ install unblock-proxy.sh and DNSCrypt  with some change and all their dependency
 `dns-anti-censorship/IR/dns_proxy/Dockerfile`
 ## installation
 finally you can install all of this stack by docker-compse
+
 note: You should first run on DE VM
 #### DE VM
+
 ```
 git clone https://github.com/momohammadi/dns-anti-censorship.git
 cd dns-anti-censorship/DE
+#open docker-compose.yml
+# find and replce below string:
+# REPLCAE_YOUR_DOMAIN, PIHOLE_ADMIN_PASS, CERTIFICATE_PATH, CERTIFICATE_PRIVATEKEY_PATH
 docker compose up -d
 ```
+pi-hole web access port number is 8081
+
 #### IR VM
+DOH stamp genrated here: [DNSCrypt - DNS Stamps online calculator ](https://dnscrypt.info/stamps/)
 ```
 git clone https://github.com/momohammadi/dns-anti-censorship.git
 cd dns-anti-censorship/IR
+#open docker-compose.yml
+# find and replce below string:
+# REPLACE_SHADOWSOCKS_IP, SHADOWSOCKS_SERVER_PORT, SHADOWSOCKS_SERVER_PASSWORD, SHADOWSOCKS_METHOD, REPLACE_SERVER_PUBLIC_IP, REPLACE_YOUR_DOMAIN, DOH_STAMP_STRING
 docker compose up -d
 ```
 
