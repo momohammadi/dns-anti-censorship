@@ -9,6 +9,8 @@ One Ubuntu/Debian VM on the unrestricted network (We called it DE)- Ram 512M, 1 
 
 One proxy account on the unrestricted network(We called it Shadow).
 
+One valid domain or subdomain + valid SSL
+
 ** any proxy account you can use I use Shadowsocks in this stack you can replace it with any other proxies also I use external Shadowsocks you can also setup Shadowsocks server on their DE VM
 
 one valid domain address
