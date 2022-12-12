@@ -8,7 +8,7 @@ this stack provides an easy way to bypass internet Censorship for your selected 
 when you change the system DNS address to your IR VM IP address all selected domains will be resolved and loaded from DE VM so you have no censorship on these domains and all of the other domains will load normally from your ISP
 
 #### why do we need two VMs?
-you can run this stack with just one VM but in this situation when the Internet lockdown completely and the government-run intranet is instead of the internet then you can not use it so I make it with two VM, one on the restricted network and the other on the open internet network for just in case when internet goes completely lockdown.
+you can run this stack with just one VM but in this situation when the Internet completely lockdown and the government-run intranet instead of the internet then you can not use it so I make it with two VM, one on the restricted network and the other on the open internet network for just in case when internet goes completely lockdown.
 
 
 ## :blue_book: Requirements
@@ -127,3 +127,4 @@ depend on your OS change your dns address to your IR VM IPs
 on some os like android you should install 3rd party app for doing dns change
 ### trick
 you ca run this stack and use his dns address for other services in the restricted network as DNS server such v2ray, pptp, l2tp, openconect or etc and then use their connection/authentication for connecting to it and with this trick finally you have an anti-censorship system with authentication solution.
+### if you love this project please start and follow me, thanks
